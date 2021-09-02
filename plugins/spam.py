@@ -67,9 +67,9 @@ async def spam(message: Message):
                 if not replied.animation and not replied.video:
                     await message.client.send_cached_media(message.chat.id, to_spam)
                 elif replied.animation:
-                    await message.client.send_animation(message.chat.id, to_spam)
+                    await message.client.send_animation(message.chat.id, dls)
                 elif replied.video:
-                    await message.client.send_video(message.chat.id, to_spam)
+                    await message.client.send_video(message.chat.id, dls)
                 await asyncio.sleep(delay)
             await S_LOG.log(
                 f"Spammed Media in Chat» {message.chat.title}, {count} times"
