@@ -47,7 +47,7 @@ async def spam(message: Message):
                 f"Spammed Sticker in Chat» {message.chat.title}, {count} times"
             )
             await message.delete()
-        elif replied.animation or replied.video or replied.photo:
+        elif replied.animation or replied.video or replied.animation or replied.photo:
             dls = await message.client.download_media(
                 message=message.reply_to_message, file_name=Config.DOWN_PATH
             )
