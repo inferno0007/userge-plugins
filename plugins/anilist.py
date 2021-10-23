@@ -694,7 +694,7 @@ async def get_ani(vars_):
     html_pc += f"<a href='{url}'> View on anilist.co</a>"
     html_pc += f"<img src='{bannerImg}'/>"
     title_h = english or romaji
-    synopsis_link = post_to_tp(title_h, html_pc)
+    synopsis_link = post_to_tp(str(title_h), str(html_pc))
     try:
         finals_ = ANIME_TEMPLATE.format(**locals())
     except KeyError as kys:
