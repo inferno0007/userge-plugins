@@ -512,7 +512,7 @@ async def character_search(message: Message):
         out += "<br>"
         title = cf["title"]["english"] or cf["title"]["romaji"]
         out += f"<p>{title}</p>"
-        out += f"<div>[🇯🇵] {cf['title']['native']}</div><br>"
+        out += f"[🇯🇵] {cf['title']['native']}<br>"
         out += f"""<a href="{cf['siteUrl']}>{cf['type']}</a><br>"""
         out += f"<b>Media ID:</b> {cf['id']}<br>"
         out += f"<b>SCORE:</b> {cf['averageScore']}/100<br>"
@@ -667,7 +667,7 @@ async def get_ani(vars_):
         html_ += f"""<img src="{character['image']['large']}"/></a>"""
         html_ += "<br>"
         html_ += f"<p>{character['name']['full']}</p>"
-        html_ += f"<div>{c_flag} {character['name']['native']}</div><br>"
+        html_ += f"{c_flag} {character['name']['native']}<br>"
         html_ += f"<b>Character ID</b>: {character['id']}<br>"
         html_ += (
             f"<p>About Character and Role:</p>{character.get('description', 'N/A')}"
