@@ -667,7 +667,7 @@ async def get_ani(vars_):
         html_ += f"""<img src="{character['image']['large']}"/></a>"""
         html_ += "<br>"
         html_ += f"<p>{character['name']['full']}</p>"
-        html_ += f"<em>{c_flag} {character['name']['native']}</em><br>"
+        html_ += f"<div>{c_flag} {character['name']['native']}</div><br>"
         html_ += f"<b>Character ID</b>: {character['id']}<br>"
         html_ += (
             f"<p>About Character and Role:</p>{character.get('description', 'N/A')}"
