@@ -512,7 +512,7 @@ async def character_search(message: Message):
         out += "<br>"
         title = cf["title"]["english"] or cf["title"]["romaji"]
         out += f"<p>{title}</p>"
-        out += f"<em>[🇯🇵] {cf['title']['native']}</em><br>"
+        out += f"<div>[🇯🇵] {cf['title']['native']}</div><br>"
         out += f"""<a href="{cf['siteUrl']}>{cf['type']}</a><br>"""
         out += f"<b>Media ID:</b> {cf['id']}<br>"
         out += f"<b>SCORE:</b> {cf['averageScore']}/100<br>"
