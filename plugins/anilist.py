@@ -441,7 +441,7 @@ async def get_schuled(message: Message):
         air_at = make_it_rw(air["airingAt"], True)
         site = air["media"]["siteUrl"]
         title_ = english or romaji
-        out += f"<h3>[🇯🇵]{title_}</h3>"
+        out += f"<p>[🇯🇵]{title_}</p>"
         out += f" • <b>ID:</b> {mid}<br>"
         out += f" • <b>Airing Episode:</b> {epi_air}<br>"
         out += f" • <b>Next Airing:</b> {air_at}<br>"
@@ -511,7 +511,7 @@ async def character_search(message: Message):
         out += f"""<img src="{cf['coverImage']['extraLarge']}"/>"""
         out += "<br>"
         title = cf["title"]["english"] or cf["title"]["romaji"]
-        out += f"<h3>{title}</h3>"
+        out += f"<p>{title}</p>"
         out += f"<em>[🇯🇵] {cf['title']['native']}</em><br>"
         out += f"""<a href="{cf['siteUrl']}>{cf['type']}</a><br>"""
         out += f"<b>Media ID:</b> {cf['id']}<br>"
@@ -525,11 +525,11 @@ async def character_search(message: Message):
 
     html_cntnt = f"<img src='{img}' title={name}/>"
     html_cntnt += f"<p>[🇯🇵] {native}</p>"
-    html_cntnt += "<h3>About Character:</h3>"
+    html_cntnt += "<p>About Character:</p>"
     html_cntnt += description
     html_cntnt += "<br>"
     if cntnt:
-        html_cntnt += "<h2>Top Featured Anime</h2>"
+        html_cntnt += "<p>Top Featured Anime</p>"
         html_cntnt += cntnt
         html_cntnt += "<br><br>"
     url_ = post_to_tp(name, html_cntnt)
@@ -666,11 +666,11 @@ async def get_ani(vars_):
         html_ += f"""<a href="{character['siteUrl']}">"""
         html_ += f"""<img src="{character['image']['large']}"/></a>"""
         html_ += "<br>"
-        html_ += f"<h3>{character['name']['full']}</h3>"
+        html_ += f"<p>{character['name']['full']}</p>"
         html_ += f"<em>{c_flag} {character['name']['native']}</em><br>"
         html_ += f"<b>Character ID</b>: {character['id']}<br>"
         html_ += (
-            f"<h4>About Character and Role:</h4>{character.get('description', 'N/A')}"
+            f"<p>About Character and Role:</p>{character.get('description', 'N/A')}"
         )
         html_char += f"{html_}<br><br>"
     studios = "".join("<a href='{}'>• {}</a> ".format(studio["siteUrl"], studio["name"]) for studio in data["studios"]["nodes"])
@@ -680,14 +680,14 @@ async def get_ani(vars_):
     html_pc = ""
     html_pc += f"<img src='{title_img}' title={romaji}/>"
     html_pc += f"<p>[{c_flag}] {native}</p>"
-    html_pc += "<h3>Synopsis:</h3>"
+    html_pc += "<p>Synopsis:</p>"
     html_pc += synopsis
     html_pc += "<br>"
     if html_char:
-        html_pc += "<h2>Main Characters:</h2>"
+        html_pc += "<p>Main Characters:</p>"
         html_pc += html_char
         html_pc += "<br><br>"
-    html_pc += "<h3>More Info:</h3>"
+    html_pc += "<p>More Info:</p>"
     html_pc += f"<b>Started On:</b> {s_date['day']}/{s_date['month']}/{s_date['year']}"
     html_pc += f"<br><b>Studios:</b> {studios}<br>"
     html_pc += f"<a href='https://myanimelist.net/anime/{idmal}'>View on MAL</a>"
