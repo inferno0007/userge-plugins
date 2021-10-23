@@ -448,7 +448,7 @@ async def get_schuled(message: Message):
         out += f" • <a href='{site}'>[Visit on anilist.co]</a><br><br>"
         c += 1
     if out:
-        out_p = f"<h1>Showing [{c}/{totl_schld}] Scheduled Animes:</h1><br><br>{out}"
+        out_p = f"<p>Showing [{c}/{totl_schld}] Scheduled Animes:</p><br><br>{out}"
         link = post_to_tp("Scheduled Animes", out_p)
         await message.edit(f"[Open in Telegraph]({link})")
 
@@ -524,7 +524,7 @@ async def character_search(message: Message):
             break
 
     html_cntnt = f"<img src='{img}' title={name}/>"
-    html_cntnt += f"<h1>[🇯🇵] {native}</h1>"
+    html_cntnt += f"<p>[🇯🇵] {native}</p>"
     html_cntnt += "<h3>About Character:</h3>"
     html_cntnt += description
     html_cntnt += "<br>"
@@ -679,7 +679,7 @@ async def get_ani(vars_):
     # Telegraph Post mejik
     html_pc = ""
     html_pc += f"<img src='{title_img}' title={romaji}/>"
-    html_pc += f"<h1>[{c_flag}] {native}</h1>"
+    html_pc += f"<p>[{c_flag}] {native}</p>"
     html_pc += "<h3>Synopsis:</h3>"
     html_pc += synopsis
     html_pc += "<br>"
