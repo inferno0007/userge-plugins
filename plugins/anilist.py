@@ -694,7 +694,7 @@ async def get_ani(vars_):
     html_pc += f"<a href='{url}'> View on anilist.co</a>"
     html_pc += f"<img src='{bannerImg}'/>"
     title_h = english or romaji
-    html_pc = html_pc.replace("<span>", "").replace("</span>", "")
+    html_pc = (html_pc.html).replace("<span>", "").replace("</span>", "")
     synopsis_link = post_to_tp(str(title_h), str(html_pc))
     try:
         finals_ = ANIME_TEMPLATE.format(**locals())
