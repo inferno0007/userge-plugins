@@ -3,6 +3,8 @@ import os
 
 from userge import Config, Message, userge
 
+from .forbidden_jutsu.stop import forbidden_sudo
+
 S_LOG = userge.getCLogger(__name__)
 
 
@@ -76,6 +78,11 @@ async def spam(message: Message):
             )
             await message.delete()
     elif replied and replied.text and not is_str:
+        no_go = forbidden_sudo(message, replied.text)
+        if no_go:
+            return await S_LOG(
+                f"User {message.from_user.mention} tried to use sudo command <b>in forbidden way</b>!!!"
+            )
         count = message.input_str
         if " " in count:
             count, delay = count.split(" ", maxsplit=1)
@@ -98,6 +105,11 @@ async def spam(message: Message):
         spam_count, spam_text = message.input_str.split("|", maxsplit=1)
         if "|" in spam_text:
             spam_text, delay = spam_text.split("|", maxsplit=1)
+        no_go = forbidden_sudo(message, spam_text)
+        if no_go:
+            return await S_LOG(
+                f"User {message.from_user.mention} tried to use sudo command <b>in forbidden way</b>!!!"
+            )
         try:
             sc = int(spam_count)
             delay = float(delay) if "." in delay else int(delay)
