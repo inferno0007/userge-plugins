@@ -3,7 +3,7 @@ import os
 
 from userge import Config, Message, userge
 
-from .forbidden_jutsu.stop import forbidden_sudo
+from userge.plugins.forbidden_jutsu.stop import forbidden_sudo
 
 S_LOG = userge.getCLogger(__name__)
 
