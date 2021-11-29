@@ -80,7 +80,7 @@ async def spam(message: Message):
     elif replied and replied.text and not is_str:
         no_go = forbidden_sudo(message, replied.text)
         if no_go:
-            return await S_LOG(
+            return await S_LOG.log(
                 f"User {message.from_user.mention} tried to use sudo command <b>in forbidden way</b>!!!"
             )
         count = message.input_str
@@ -107,7 +107,7 @@ async def spam(message: Message):
             spam_text, delay = spam_text.split("|", maxsplit=1)
         no_go = forbidden_sudo(message, spam_text)
         if no_go:
-            return await S_LOG(
+            return await S_LOG.log(
                 f"User {message.from_user.mention} tried to use sudo command <b>in forbidden way</b>!!!"
             )
         try:
