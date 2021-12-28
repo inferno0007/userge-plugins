@@ -59,6 +59,7 @@ async def join_chat(message: Message):
     "leave",
     about={
         "header": "Leave Chat",
+        "flags": {"-b": "remove bot from chat"},
         "usage": "{tr}leave\n{tr}leave [chat username | reply to Chat username text]",
         "examples": ["{tr}leave", "{tr}leave UserGeOt"],
     },
@@ -67,10 +68,13 @@ async def join_chat(message: Message):
 async def leave_chat(message: Message):
     """ Leave chat """
     input_str = message.input_str
-    text = input_str or message.chat.id
+    chat_ = input_str or message.chat.id
     try:
-        await userge.send_message(text, "```Good bye, Cruel World... :-) ```")
-        await userge.leave_chat(text)
+        if "-b" in message.flags:
+            await userge.bot.leave_chat(chat_)
+        else:
+            await userge.send_message(chat_, "```I left the chat.```")
+            await userge.leave_chat(chat_)
     except UsernameNotOccupied:
         await message.edit(
             "```Username that you entered, doesn't exist... ```", del_in=3
@@ -78,7 +82,7 @@ async def leave_chat(message: Message):
         return
     except PeerIdInvalid:
         await message.edit(
-            "```Chat id which you entered seems not to be exist...```", del_in=3
+            "```Chat id which you entered doesn't seem to exist...```", del_in=3
         )
         return
     else:
