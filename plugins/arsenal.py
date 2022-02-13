@@ -11,7 +11,7 @@ _LOG = logging.getLogger(__name__)
 async def banager(message: Message, chat_id: int, user_id: int, until_date: int) -> str:
     log_msg = ""
     try:
-        await message.client.kick_chat_member(
+        await message.client.ban_chat_member(
             chat_id=chat_id, user_id=user_id, until_date=until_date
         )
         log_msg = "Success"
